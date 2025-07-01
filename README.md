@@ -127,7 +127,7 @@ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -
 
 ---
 
-### **Step 4: Start n8n and Configure for Auto-Startup**
+### **Step 5: Start n8n and Configure for Auto-Startup**
 
 ```bash
 # Start n8n
@@ -142,7 +142,7 @@ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -
 
 ---
 
-### **Step 5: Install Nginx Web Server**
+### **Step 6: Install Nginx Web Server**
 
 ```bash
 sudo apt-get install -y nginx
@@ -150,7 +150,7 @@ sudo apt-get install -y nginx
 
 ---
 
-### **Step 6: Configure Nginx for Your Domain**
+### **Step 7: Configure Nginx for Your Domain**
 
 ```bash
 sudo tee /etc/nginx/sites-available/n8n > /dev/null <<EOF
@@ -175,7 +175,7 @@ EOF
 
 ---
 
-### **Step 7: Enable the Nginx Site and Restart**
+### **Step 8: Enable the Nginx Site and Restart**
 
 ```bash
 sudo ln -s -f /etc/nginx/sites-available/n8n /etc/nginx/sites-enabled/
@@ -185,7 +185,7 @@ sudo systemctl restart nginx
 
 ---
 
-### **Step 8: Configure Local Firewall (UFW)**
+### **Step 9: Configure Local Firewall (UFW)**
 
 ```bash
 sudo apt-get install -y ufw
@@ -196,7 +196,7 @@ yes | sudo ufw enable
 
 ---
 
-### **Step 9: Install Certbot and Obtain SSL Certificate**
+### **Step 10: Install Certbot and Obtain SSL Certificate**
 
 ```bash
 sudo apt-get install -y certbot python3-certbot-nginx
