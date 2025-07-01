@@ -63,8 +63,8 @@ sudo apt-get install -y curl wget gnupg
 ### **Step 2: Install Node.js v20**
 
 ```bash
-curl -fsSL [https://deb.nodesource.com/setup_20.x](https://deb.nodesource.com/setup_20.x) | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs npm
 ```
 
 ---
