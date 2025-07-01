@@ -80,6 +80,53 @@ sudo npm install pm2 -g
 
 ---
 
+### **Step 4: Create pm2 Config and Start n8n**
+
+Using a `pm2` ecosystem file is the recommended way to manage n8n's environment variables, such as the `WEBHOOK_URL` needed for production.
+
+**4.1. Find the n8n executable path:**
+
+```bash
+which n8n
+```
+Copy the output path (e.g., `/usr/bin/n8n`). You will need it for the next step.
+
+**4.2. Create the ecosystem configuration file:**
+
+```bash
+nano ecosystem.config.js
+```
+Paste the following content into the file. **Replace `/path/to/your/n8n` with the path from the previous command, and use your actual domain for the `WEBHOOK_URL`.**
+
+```javascript
+module.exports = {
+  apps: [
+    {
+      name: 'n8n',
+      script: '/path/to/your/n8n',
+      env: {
+        WEBHOOK_URL: 'https://' + process.env.DOMAIN,
+      },
+    },
+  ],
+};
+```
+
+**4.3. Start n8n with the new config and configure for auto-startup:**
+
+```bash
+# Start n8n using the ecosystem file
+pm2 start ecosystem.config.js
+
+# Save the process list
+pm2 save
+
+# Generate and configure the startup script
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u $USER --hp /home/$USER
+```
+
+---
+
 ### **Step 4: Start n8n and Configure for Auto-Startup**
 
 ```bash
